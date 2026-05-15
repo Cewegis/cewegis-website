@@ -353,8 +353,10 @@ function openModal(item){
   document.getElementById('f-artikel').value=item.name+(item.artnr?' (Art.-Nr. '+item.artnr+')':'');
   const hint=document.getElementById('menge-hint');
   const mengeEl=document.getElementById('f-menge');
-  if(min){hint.textContent='Mindestmenge: '+min+' Stück';mengeEl.min=min;mengeEl.placeholder='min. '+min;}
-  else{hint.textContent='';mengeEl.min=1;mengeEl.placeholder='z. B. 100';}
+  if(min){
+    hint.innerHTML='<span style="color:var(--orange);font-weight:600">⚠️ Mindestmenge: '+min+' Stück</span>';
+    mengeEl.min=min;mengeEl.placeholder='min. '+min+' Stück';mengeEl.dataset.min=min;
+  }else{hint.textContent='';mengeEl.min=1;mengeEl.placeholder='z. B. 100';mengeEl.dataset.min=1;}
 
   // Galerie
   const gal=document.getElementById('modal-gallery');
@@ -420,9 +422,16 @@ uz.addEventListener('drop',e=>{e.preventDefault();uz.classList.remove('dragover'
 
 document.getElementById('anfrage-form').addEventListener('submit',async function(e){
   e.preventDefault();
-  const menge=parseInt(document.getElementById('f-menge').value)||0;
-  const min=parseInt(document.getElementById('f-menge').min)||1;
-  if(menge<min){alert('Mindestmenge ist '+min+' Stück.');return;}
+  const mengeEl=document.getElementById('f-menge');
+  const menge=parseInt(mengeEl.value)||0;
+  const min=parseInt(mengeEl.dataset.min)||1;
+  if(menge<min){
+    mengeEl.style.borderColor='var(--orange)';
+    document.getElementById('menge-hint').innerHTML='<span style="color:var(--orange);font-weight:600">⚠️ Mindestmenge ist '+min+' Stück! Bitte erhöhen.</span>';
+    mengeEl.focus();
+    return;
+  }
+  mengeEl.style.borderColor='';
   const cs=document.getElementById('color-section');
   if(cs.style.display!=='none'&&!document.getElementById('f-farbe').value){alert('Bitte eine Farbe auswählen.');return;}
   const btn=document.getElementById('submit-btn');btn.textContent='Wird gesendet…';btn.disabled=true;
