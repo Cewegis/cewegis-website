@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Werbeartikel mit Logo – Cewegis Großhandel GmbH</title>
+<meta name="description" content="Hochwertige Werbeartikel individuell mit Ihrem Logo bedruckt. Kugelschreiber, Schreibsets, Taschen, Feuerzeuge und mehr. Jetzt Angebot anfordern.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--orange:#E8440A;--dark:#1a1a1a;--mid:#444;--muted:#777;--border:#e8e8e8;--bg:#f7f7f5;--white:#fff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--dark)}
+  nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+  .nav-logo{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-decoration:none;color:var(--dark)}
+  .nav-logo span{color:var(--orange)}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--mid);text-decoration:none;transition:color .15s}
+  .nav-links a:hover,.nav-links a.active{color:var(--orange)}
+  .nav-cta{background:var(--orange);color:var(--white);font-size:14px;font-weight:600;padding:9px 20px;border-radius:4px;text-decoration:none;transition:background .15s}
+  .nav-cta:hover{background:#c93a08}
+  .hero{background:var(--dark);color:var(--white);padding:5rem 2rem 4rem}
+  .hero-inner{max-width:1100px;margin:0 auto}
+  .hero-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+  .hero-label::before{content:'';width:32px;height:2px;background:var(--orange)}
+  .hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(42px,7vw,72px);font-weight:800;line-height:.95;text-transform:uppercase;margin-bottom:1.25rem}
+  .hero h1 em{color:var(--orange);font-style:normal}
+  .hero p{font-size:16px;color:rgba(255,255,255,.65);max-width:560px;line-height:1.7;margin-bottom:2rem}
+  .hero-badges{display:flex;gap:10px;flex-wrap:wrap}
+  .hero-badge{font-size:12px;font-weight:600;padding:5px 12px;border-radius:3px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.15)}
+  .filter-bar{background:var(--white);border-bottom:1px solid var(--border);padding:.75rem 2rem;position:sticky;top:64px;z-index:90}
+  .filter-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .filter-label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-right:4px}
+  .filter-btn{font-family:'Barlow',sans-serif;font-size:13px;font-weight:500;padding:6px 14px;border-radius:3px;border:1px solid var(--border);background:var(--white);color:var(--mid);cursor:pointer;transition:all .15s;white-space:nowrap}
+  .filter-btn:hover{border-color:var(--dark);color:var(--dark)}
+  .filter-btn.active{background:var(--orange);border-color:var(--orange);color:var(--white)}
+  .search-wrap{margin-left:auto;position:relative}
+  .search-wrap::before{content:'🔍';position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:13px}
+  .search-wrap input{font-family:'Barlow',sans-serif;font-size:13px;padding:7px 14px 7px 34px;border:1px solid var(--border);border-radius:3px;background:var(--bg);color:var(--dark);outline:none;width:220px;transition:border-color .15s}
+  .search-wrap input:focus{border-color:var(--dark);background:var(--white)}
+  main{max-width:1100px;margin:0 auto;padding:3rem 2rem 5rem}
+  .section{margin-bottom:3rem}
+  .section-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.25rem}
+  .section-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);padding-bottom:.4rem;border-bottom:3px solid var(--orange)}
+  .section-count{font-size:12px;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+  .card{background:var(--white);border:1px solid var(--border);border-radius:4px;overflow:hidden;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s}
+  .card:hover{border-color:var(--orange);box-shadow:0 6px 24px rgba(232,68,10,.1);transform:translateY(-3px)}
+  .card-gallery{position:relative;width:100%;height:160px;background:var(--bg);border-bottom:1px solid var(--border);overflow:hidden}
+  .card-gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:10px;opacity:0;transition:opacity .3s}
+  .card-gallery img.active{opacity:1}
+  .card-gallery-dots{position:absolute;bottom:6px;left:0;right:0;display:flex;justify-content:center;gap:4px}
+  .card-gallery-dot{width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,.2);cursor:pointer;transition:background .15s;border:none}
+  .card-gallery-dot.active{background:var(--orange)}
+  .card-placeholder{width:100%;height:160px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:42px;border-bottom:1px solid var(--border)}
+  .card-body{padding:14px}
+  .card-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px;margin-bottom:8px}
+  .card-name{font-size:13px;font-weight:600;line-height:1.35;margin-bottom:4px}
+  .card-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .card-artnr{font-size:11px;color:var(--muted);margin-bottom:6px}
+  .card-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .card-meta span{font-size:11px;color:var(--muted)}
+  .card-cta{margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;font-weight:600;color:var(--orange);letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;gap:4px}
+  .card-cta svg{transition:transform .15s}
+  .card:hover .card-cta svg{transform:translateX(3px)}
+  .loading{text-align:center;padding:4rem;color:var(--muted)}
+  .spinner{display:inline-block;width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--orange);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:1rem}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .error-box{background:#fff3f0;border:1px solid #f5c5b5;border-radius:4px;padding:1rem 1.25rem;font-size:13px;color:#8B2500}
+  .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center;padding:1rem}
+  .overlay.open{display:flex}
+  .modal{background:var(--white);border-radius:6px;width:100%;max-width:580px;max-height:92vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,.2)}
+  .modal-top{background:var(--dark);color:var(--white);padding:1.5rem;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-radius:6px 6px 0 0}
+  .modal-top-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:5px}
+  .modal-top-name{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;line-height:1.1}
+  .modal-top-sub{font-size:12px;color:rgba(255,255,255,.5);margin-top:4px}
+  .modal-close{background:rgba(255,255,255,.1);border:none;color:var(--white);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+  .modal-close:hover{background:rgba(255,255,255,.2)}
+  .modal-body{padding:1.5rem}
+  .modal-gallery{position:relative;width:100%;height:220px;background:var(--bg);border-radius:4px;margin-bottom:1.25rem;overflow:hidden}
+  .modal-gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:12px;opacity:0;transition:opacity .3s}
+  .modal-gallery img.active{opacity:1}
+  .mgal-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.9);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+  .mgal-prev{left:8px}
+  .mgal-next{right:8px}
+  .mgal-dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px}
+  .mgal-dot{width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,.2);cursor:pointer;border:none;transition:background .15s}
+  .mgal-dot.active{background:var(--orange)}
+  .modal-info{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.25rem}
+  .modal-info-item{background:var(--bg);border-radius:3px;padding:8px 10px}
+  .modal-info-label{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+  .modal-info-value{font-size:13px;color:var(--dark);font-weight:500}
+  .modal-desc{font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:1.25rem;padding:10px 12px;background:var(--bg);border-radius:3px;border-left:3px solid var(--orange)}
+  .form-row{margin-bottom:14px}
+  .form-label{display:block;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
+  .form-row input,.form-row select,.form-row textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:3px;font-family:'Barlow',sans-serif;font-size:14px;color:var(--dark);background:var(--white);outline:none;transition:border-color .15s}
+  .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--dark)}
+  .form-row input[readonly]{background:var(--bg);color:var(--muted)}
+  .form-row textarea{height:80px;resize:vertical}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .req{color:var(--orange)}
+  .divider{border:none;border-top:1px solid var(--border);margin:1.25rem 0}
+  .color-label{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;display:block}
+  .color-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+  .color-swatch{width:30px;height:30px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .1s,border-color .1s;position:relative;flex-shrink:0}
+  .color-swatch:hover{transform:scale(1.15)}
+  .color-swatch.selected{border-color:var(--dark);transform:scale(1.15)}
+  .color-swatch.selected::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--white);text-shadow:0 1px 3px rgba(0,0,0,.6)}
+  .selected-color-text{font-size:13px;color:var(--dark);font-weight:500;min-height:20px}
+  .upload-zone{border:2px dashed var(--border);border-radius:4px;padding:1.25rem;text-align:center;cursor:pointer;background:var(--bg);transition:border-color .15s,background .15s}
+  .upload-zone:hover,.upload-zone.dragover{border-color:var(--orange);background:#fff4f0}
+  .upload-main{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:3px}
+  .upload-hint{font-size:12px;color:var(--muted)}
+  .fmt-tags{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+  .fmt-tag{font-size:10px;font-weight:600;padding:2px 6px;border-radius:2px;background:var(--white);border:1px solid var(--border);color:var(--muted)}
+  .file-list{margin-top:8px;display:flex;flex-direction:column;gap:5px}
+  .file-item{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);border-radius:3px;padding:7px 10px}
+  .file-name{font-size:12px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .file-size{font-size:11px;color:var(--muted)}
+  .file-remove{background:none;border:none;cursor:pointer;color:var(--muted);font-size:14px;transition:color .15s}
+  .file-remove:hover{color:var(--orange)}
+  .no-file-note{font-size:12px;color:var(--muted);margin-top:6px;font-style:italic}
+  .submit-btn{width:100%;padding:13px;background:var(--orange);color:var(--white);border:none;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;margin-top:.75rem;transition:background .15s,transform .1s;display:flex;align-items:center;justify-content:center;gap:8px}
+  .submit-btn:hover{background:#c93a08}
+  .submit-btn:active{transform:scale(.98)}
+  .submit-btn:disabled{background:#ccc;cursor:not-allowed}
+  .success-view{display:none;text-align:center;padding:2.5rem 1.5rem}
+  .success-icon{font-size:48px;margin-bottom:1rem}
+  .success-view h3{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;text-transform:uppercase;color:var(--dark);margin-bottom:.5rem}
+  .success-view p{font-size:14px;color:var(--muted);line-height:1.7}
+  footer{background:var(--dark);color:rgba(255,255,255,.5);text-align:center;padding:2rem;font-size:13px;line-height:1.8}
+  footer a{color:rgba(255,255,255,.5);text-decoration:none}
+  footer a:hover{color:var(--white)}
+  .footer-logo{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;color:var(--white);margin-bottom:.5rem}
+  .footer-logo span{color:var(--orange)}
+  @media(max-width:768px){nav{padding:0 1rem}.nav-links{display:none}.hero{padding:3rem 1.25rem 2.5rem}main{padding:2rem 1.25rem 4rem}.filter-bar{padding:.75rem 1.25rem;overflow-x:auto}.row2{grid-template-columns:1fr}.modal-body{padding:1.25rem}.modal-info{grid-template-columns:1fr}.search-wrap input{width:150px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="https://cewegis.de" class="nav-logo"><span>CE</span>WEGIS</a>
+  <ul class="nav-links">
+    <li><a href="https://cewegis.de#sortiment">Sortiment</a></li>
+    <li><a href="https://cewegis.de#warum">Über uns</a></li>
+    <li><a href="https://cewegis.de#kontakt">Kontakt</a></li>
+    <li><a href="werbeartikel.html" class="active">Werbeartikel</a></li>
+  </ul>
+  <a href="https://cewegis.de#kontakt" class="nav-cta">Kontakt</a>
+</nav>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Cewegis · Berlin · Werbeartikel</div>
+    <h1>Werbeartikel<br><em>mit Logo</em></h1>
+    <p>Kugelschreiber, Schreibsets, Taschen, Feuerzeuge und mehr – individuell mit Ihrem Firmenlogo bedruckt. Artikel anklicken und Angebot anfordern.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">✓ Individuell bedruckbar</span>
+      <span class="hero-badge">✓ Schnelle Lieferung</span>
+      <span class="hero-badge">✓ Faire Preise</span>
+      <span class="hero-badge">✓ Kostenloser E-Proof</span>
+    </div>
+  </div>
+</div>
+<div class="filter-bar">
+  <div class="filter-inner">
+    <span class="filter-label">Kategorie</span>
+    <button class="filter-btn active" onclick="setFilter('alle',this)">Alle</button>
+    <div id="filter-buttons"></div>
+    <div class="search-wrap"><input type="text" id="search-input" placeholder="Artikel suchen…" oninput="doSearch(this.value)"></div>
+  </div>
+</div>
+<main id="main-content"><div class="loading"><div class="spinner"></div><br>Artikel werden geladen…</div></main>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="modal-top">
+      <div>
+        <div class="modal-top-label">Angebot anfordern</div>
+        <div class="modal-top-name" id="m-name"></div>
+        <div class="modal-top-sub" id="m-sub"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="anfrage-form" name="werbeartikel-anfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+        <input type="hidden" name="form-name" value="werbeartikel-anfrage">
+        <p style="display:none"><label>Nicht ausfüllen: <input name="bot-field"></label></p>
+        <div class="modal-gallery" id="modal-gallery" style="display:none">
+          <button type="button" class="mgal-nav mgal-prev" onclick="gPrev()">‹</button>
+          <button type="button" class="mgal-nav mgal-next" onclick="gNext()">›</button>
+          <div class="mgal-dots" id="mgal-dots"></div>
+        </div>
+        <div class="modal-info" id="modal-info"></div>
+        <div class="modal-desc" id="modal-desc" style="display:none"></div>
+        <div class="form-row">
+          <label class="form-label">Artikel</label>
+          <input type="text" name="artikel" id="f-artikel" readonly>
+        </div>
+        <div id="color-section" style="display:none;margin-bottom:14px">
+          <span class="color-label">Farbe wählen <span class="req">*</span></span>
+          <div class="color-grid" id="color-grid"></div>
+          <div class="selected-color-text" id="selected-color-text">Bitte Farbe auswählen</div>
+          <input type="hidden" name="farbe" id="f-farbe">
+        </div>
+        <div class="form-row" id="veredelung-row" style="display:none">
+          <label class="form-label">Veredelung <span class="req">*</span></label>
+          <select name="veredelung" id="f-veredelung"><option value="">Bitte wählen…</option></select>
+        </div>
+        <div class="form-row" id="druckposition-row" style="display:none">
+          <label class="form-label">Druckposition <span class="req">*</span></label>
+          <select name="druckposition" id="f-druckposition"><option value="">Bitte wählen…</option></select>
+        </div>
+        <div class="row2">
+          <div class="form-row">
+            <label class="form-label">Menge <span class="req">*</span></label>
+            <input type="number" name="menge" id="f-menge" placeholder="z. B. 100" min="1" required>
+            <div style="font-size:11px;color:var(--muted);margin-top:3px" id="menge-hint"></div>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Wunschtermin</label>
+            <input type="date" name="termin">
+          </div>
+        </div>
+        <div class="row2">
+          <div class="form-row">
+            <label class="form-label">Firma / Name <span class="req">*</span></label>
+            <input type="text" name="firma" id="f-firma" placeholder="Firmenname" required>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Ansprechpartner <span class="req">*</span></label>
+            <input type="text" name="name" id="f-name" placeholder="Vor- und Nachname" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">E-Mail <span class="req">*</span></label>
+          <input type="email" name="email" id="f-mail" placeholder="email@firma.de" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Telefon</label>
+          <input type="tel" name="telefon" placeholder="+49 …">
+        </div>
+        <hr class="divider">
+        <div style="font-size:13px;font-weight:600;color:var(--dark);margin-bottom:10px">📎 Druckdaten / Logo hochladen <span style="font-size:11px;font-weight:400;color:var(--muted)">(optional)</span></div>
+        <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
+          <div style="font-size:26px;margin-bottom:4px">☁️</div>
+          <div class="upload-main">Dateien ablegen oder klicken</div>
+          <div class="upload-hint">PDF, AI, EPS, PNG, JPG, ZIP · max. 10 MB</div>
+          <div class="fmt-tags"><span class="fmt-tag">PDF</span><span class="fmt-tag">AI</span><span class="fmt-tag">EPS</span><span class="fmt-tag">PNG</span><span class="fmt-tag">JPG</span><span class="fmt-tag">ZIP</span></div>
+        </div>
+        <input type="file" id="file-input" name="dateien" multiple accept=".pdf,.ai,.eps,.svg,.png,.jpg,.jpeg,.zip" style="display:none" onchange="handleFiles(this.files)">
+        <div class="file-list" id="file-list"></div>
+        <div class="no-file-note" id="no-file-note">Noch keine Dateien – können auch per E-Mail nachgereicht werden.</div>
+        <hr class="divider">
+        <div class="form-row">
+          <label class="form-label">Anmerkungen</label>
+          <textarea name="anmerkungen" id="f-note" placeholder="Pantone-Farbe, besondere Anforderungen…"></textarea>
+        </div>
+        <button type="submit" class="submit-btn" id="submit-btn">Angebot anfordern →</button>
+      </form>
+      <div class="success-view" id="success-view">
+        <div class="success-icon">✅</div>
+        <h3>Anfrage gesendet!</h3>
+        <p id="success-text">Vielen Dank! Wir melden uns schnellstmöglich.<br><br>Cewegis Großhandel GmbH · Berlin<br>Tel: 0178 562 3485</p>
+        <button class="submit-btn" style="margin-top:1.5rem" onclick="closeModal()">Weitere Anfrage stellen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo"><span>CE</span>WEGIS Großhandel GmbH</div>
+  Hildburghauser Str. 47 · 12279 Berlin<br>
+  <a href="tel:01785623485">0178 562 3485</a> · <a href="mailto:info@cewegis.de">info@cewegis.de</a><br><br>
+  <a href="https://cewegis.de">← Zurück zur Startseite</a> &nbsp;·&nbsp; <a href="https://cewegis.de#impressum">Impressum</a> &nbsp;·&nbsp; <a href="https://cewegis.de#datenschutz">Datenschutz</a>
+</footer>
+
+<script>
+const SHEET_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vS5iHXfT2C0f7CFz3iujuELO3v_kmiA-is1OqwOgDKUVng3PTCLMgFn-VD6u8W2oEjhZCl_K4wEqD43/pub?gid=0&single=true&output=csv';
+// Spalten: a=name b=artnr c=kategorie d=mindestmenge e=veredelung f=druckposition g=beschreibung h=farben i=bilder j=aktiv k=farbliste
+const KAT={
+  'Schreibset':{emoji:'🖊️',bg:'#FFF3E0',color:'#BF4B00'},
+  'Kugelschreiber':{emoji:'✒️',bg:'#E8F5E9',color:'#1B5E20'},
+  'Feuerzeug':{emoji:'🔥',bg:'#FCE4EC',color:'#880E4F'},
+  'Tasche':{emoji:'👜',bg:'#E3F2FD',color:'#0D47A1'},
+  'Werbeartikel':{emoji:'🎁',bg:'#F3E5F5',color:'#4A148C'},
+};
+function kc(k){return KAT[k]||{emoji:'📦',bg:'#F5F5F5',color:'#333'}}
+const FM={'schwarz':'#222','weiß':'#f5f5f5','weiss':'#f5f5f5','weis':'#f5f5f5','rot':'#e53935','blau':'#1565C0','dunkelblau':'#0D47A1','hellblau':'#42A5F5','navy':'#1a237e','grün':'#2E7D32','dunkelgrün':'#1B5E20','apfelgrün':'#8BC34A','hellgrün':'#A5D6A7','gelb':'#FDD835','orange':'#FB8C00','hellorange':'#FFCC02','dunkelorange':'#E65100','pink':'#E91E63','lila':'#7B1FA2','türkis':'#00897B','burgunder':'#7B1134','anthrazit':'#455A64','grau':'#9E9E9E','silbergrau':'#B0BEC5','warmgrau':'#8D6E63','braun':'#5D4037','beige':'#D7CCC8','forrest':'#2E7D32','dark cool':'#37474F','hellgelb':'#FFF176','stone':'#90A4AE','ockerbraun':'#795548','petrol':'#00796B','cyan':'#0097A7','royal':'#1565C0','white':'#f5f5f5','black':'#222','green':'#2E7D32','grey':'#9E9E9E','purple':'#7B1FA2','olive':'#558B2F','bordeaux':'#6D1A2A','violett':'#6A1B9A','nature':'#A5D6A7'};
+function fc(n){const k=n.toLowerCase().trim();return FM[k]||('#'+Math.abs(k.split('').reduce((a,c)=>((a<<5)-a)+c.charCodeAt(0),0)).toString(16).slice(0,6).padStart(6,'9'))}
+function bs(b){if(!b)return null;if(b.startsWith('http')||b.startsWith('//'))return b;return 'bilder/'+b}
+const BRIGHT=['weiß','weiss','weis','white','hellgelb','gelb','yellow','hellblau','hellgrün','beige','stone','nature','silbergrau'];
+
+let alle=[],aktKat='alle',such='',files=[],gIdx=0,gImgs=[];
+
+async function laden(){
+  const m=document.getElementById('main-content');
+  try{
+    const r=await fetch(SHEET_URL);
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const csv=await r.text();
+    alle=parseCSV(csv);
+    filter_btns();render();
+  }catch(e){m.innerHTML=`<div class="error-box">⚠️ Fehler: ${e.message}</div>`;}
+}
+function parseCSV(csv){
+  const ls=csv.trim().split('\n');
+  const hs=ls[0].split(',').map(h=>h.trim().replace(/"/g,'').toLowerCase());
+  return ls.slice(1).map(l=>{
+    const vs=l.match(/(".*?"|[^,]+)(?=,|$)/g)||[];
+    const o={};hs.forEach((h,i)=>o[h]=(vs[i]||'').replace(/"/g,'').trim());return o;
+  }).filter(p=>p.name&&p.aktiv!=='nein');
+}
+function filter_btns(){
+  const kats=[...new Set(alle.map(p=>p.kategorie).filter(Boolean))];
+  const w=document.getElementById('filter-buttons');w.innerHTML='';
+  kats.forEach(k=>{const c=kc(k);const b=document.createElement('button');b.className='filter-btn';b.textContent=c.emoji+' '+k;b.onclick=()=>setFilter(k,b);w.appendChild(b);});
+}
+function setFilter(k,b){aktKat=k;document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');render();}
+function doSearch(v){such=v.toLowerCase().trim();render();}
+function render(){
+  const m=document.getElementById('main-content');m.innerHTML='';
+  const gf=alle.filter(p=>{const ko=aktKat==='alle'||p.kategorie===aktKat;const so=!such||JSON.stringify(p).toLowerCase().includes(such);return ko&&so;});
+  if(!gf.length){m.innerHTML='<div style="text-align:center;padding:3rem;color:var(--muted)">Keine Artikel gefunden.</div>';return;}
+  const gr={};gf.forEach(p=>{const k=p.kategorie||'Sonstige';if(!gr[k])gr[k]=[];gr[k].push(p);});
+  Object.entries(gr).forEach(([kat,items])=>{
+    const c=kc(kat);
+    const sec=document.createElement('div');sec.className='section';
+    sec.innerHTML=`<div class="section-head"><div class="section-title">${c.emoji} ${kat}</div><span class="section-count">${items.length} Artikel</span></div>`;
+    const grid=document.createElement('div');grid.className='grid';
+    items.forEach(item=>{
+      const card=document.createElement('div');card.className='card';card.setAttribute('tabindex','0');
+      const bilder=item.bilder?item.bilder.split(';').map(b=>b.trim()).filter(Boolean):[];
+      const min=item.mindestmenge?parseInt(item.mindestmenge)||0:0;
+      let bh='';
+      if(bilder.length){
+        bh=`<div class="card-gallery">`;
+        bilder.forEach((b,i)=>{bh+=`<img src="${bs(b)}" class="${i===0?'active':''}" loading="lazy" onerror="this.style.display='none'">`;});
+        if(bilder.length>1){bh+=`<div class="card-gallery-dots">`;bilder.forEach((_,i)=>{bh+=`<button class="card-gallery-dot${i===0?' active':''}" onclick="event.stopPropagation();cg(this,${i})"></button>`;});bh+=`</div>`;}
+        bh+=`</div>`;
+      }else{bh=`<div class="card-placeholder">${c.emoji}</div>`;}
+      card.innerHTML=`${bh}<div class="card-body"><span class="card-badge" style="background:${c.bg};color:${c.color}">${kat}</span><div class="card-name">${item.name}</div>${item.beschreibung?`<div class="card-desc">${item.beschreibung}</div>`:''}<div class="card-artnr">Art.-Nr. ${item.artnr||'–'}</div><div class="card-meta">${min?`<span>📦 ab ${min} Stück</span>`:''}${item.farbliste?`<span>🎨 ${item.farbliste.split(';').length} Farben</span>`:item.farben?`<span>🎨 ${item.farben}</span>`:''}</div><div class="card-cta">Angebot anfordern <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>`;
+      card.onclick=()=>openModal(item);card.onkeydown=e=>{if(e.key==='Enter')openModal(item);};
+      grid.appendChild(card);
+    });
+    sec.appendChild(grid);m.appendChild(sec);
+  });
+}
+function cg(dot,idx){const g=dot.closest('.card-gallery');g.querySelectorAll('img').forEach((img,i)=>img.classList.toggle('active',i===idx));g.querySelectorAll('.card-gallery-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));}
+
+function openModal(item){
+  document.getElementById('m-name').textContent=item.name;
+  const min=item.mindestmenge?parseInt(item.mindestmenge)||0:0;
+  document.getElementById('m-sub').textContent=(item.artnr?'Art.-Nr. '+item.artnr:'')+(min?' · ab '+min+' Stück':'');
+  document.getElementById('f-artikel').value=item.name+(item.artnr?' (Art.-Nr. '+item.artnr+')':'');
+  const hint=document.getElementById('menge-hint');
+  const mengeEl=document.getElementById('f-menge');
+  if(min){hint.textContent='Mindestmenge: '+min+' Stück';mengeEl.min=min;mengeEl.placeholder='min. '+min;}
+  else{hint.textContent='';mengeEl.min=1;mengeEl.placeholder='z. B. 100';}
+
+  // Galerie
+  const gal=document.getElementById('modal-gallery');
+  gal.innerHTML='<button type="button" class="mgal-nav mgal-prev" onclick="gPrev()">‹</button><button type="button" class="mgal-nav mgal-next" onclick="gNext()">›</button><div class="mgal-dots" id="mgal-dots"></div>';
+  gImgs=item.bilder?item.bilder.split(';').map(b=>b.trim()).filter(Boolean):[];
+  gIdx=0;
+  if(gImgs.length){
+    gal.style.display='';
+    gImgs.forEach((b,i)=>{const img=document.createElement('img');img.src=bs(b);img.alt=item.name;if(i===0)img.classList.add('active');img.onerror=function(){this.style.display='none';};gal.insertBefore(img,gal.querySelector('.mgal-prev'));});
+    const dotsEl=document.getElementById('mgal-dots');
+    if(gImgs.length>1){gImgs.forEach((_,i)=>{const d=document.createElement('button');d.type='button';d.className='mgal-dot'+(i===0?' active':'');d.onclick=()=>gGo(i);dotsEl.appendChild(d);});gal.querySelector('.mgal-prev').style.display='';gal.querySelector('.mgal-next').style.display='';}
+    else{gal.querySelector('.mgal-prev').style.display='none';gal.querySelector('.mgal-next').style.display='none';}
+  }else{gal.style.display='none';}
+
+  // Info
+  const info=document.getElementById('modal-info');info.innerHTML='';
+  [{l:'Art.-Nr.',v:item.artnr},{l:'Kategorie',v:item.kategorie},{l:'Mindestmenge',v:min?'ab '+min+' Stück':''},{l:'Farben',v:item.farben}].filter(x=>x.v).forEach(({l,v})=>{info.innerHTML+=`<div class="modal-info-item"><div class="modal-info-label">${l}</div><div class="modal-info-value">${v}</div></div>`;});
+
+  // Beschreibung
+  const desc=document.getElementById('modal-desc');
+  if(item.beschreibung){desc.textContent=item.beschreibung;desc.style.display='';}else{desc.style.display='none';}
+
+  // Veredelung
+  const vr=document.getElementById('veredelung-row'),vs=document.getElementById('f-veredelung');
+  vs.innerHTML='<option value="">Bitte wählen…</option>';
+  if(item.veredelung){vr.style.display='';item.veredelung.split(';').forEach(v=>{const o=document.createElement('option');o.value=v.trim();o.textContent=v.trim();vs.appendChild(o);});}else{vr.style.display='none';}
+
+  // Druckposition
+  const dr=document.getElementById('druckposition-row'),ds=document.getElementById('f-druckposition');
+  ds.innerHTML='<option value="">Bitte wählen…</option>';
+  if(item.druckposition){dr.style.display='';item.druckposition.split(';').forEach(d=>{const o=document.createElement('option');o.value=d.trim();o.textContent=d.trim();ds.appendChild(o);});}else{dr.style.display='none';}
+
+  // Farben
+  const cs=document.getElementById('color-section'),cg2=document.getElementById('color-grid');
+  cg2.innerHTML='';document.getElementById('selected-color-text').textContent='Bitte Farbe auswählen';document.getElementById('f-farbe').value='';
+  if(item.farbliste){
+    cs.style.display='';
+    item.farbliste.split(';').map(f=>f.trim()).filter(Boolean).forEach(f=>{
+      const sw=document.createElement('div');sw.className='color-swatch';sw.title=f;sw.style.background=fc(f);
+      if(BRIGHT.some(x=>f.toLowerCase().includes(x)))sw.style.border='2px solid #ccc';
+      sw.onclick=()=>{document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('selected'));sw.classList.add('selected');document.getElementById('f-farbe').value=f;document.getElementById('selected-color-text').textContent='✓ '+f;};
+      cg2.appendChild(sw);
+    });
+  }else{cs.style.display='none';}
+
+  document.getElementById('anfrage-form').style.display='';document.getElementById('success-view').style.display='none';
+  files=[];renderFiles();['f-menge','f-firma','f-name','f-mail','f-note'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('overlay').classList.add('open');document.querySelector('.modal').scrollTop=0;
+}
+function gGo(i){gIdx=(i+gImgs.length)%gImgs.length;document.querySelectorAll('#modal-gallery img').forEach((img,j)=>img.classList.toggle('active',j===gIdx));document.querySelectorAll('#mgal-dots button').forEach((d,j)=>d.classList.toggle('active',j===gIdx));}
+function gPrev(){gGo(gIdx-1);}
+function gNext(){gGo(gIdx+1);}
+function closeModal(){document.getElementById('overlay').classList.remove('open');}
+document.getElementById('overlay').addEventListener('click',e=>{if(e.target.id==='overlay')closeModal();});
+
+function handleFiles(fs){Array.from(fs).forEach(f=>{if(f.size>10*1024*1024){alert(f.name+' zu groß');return;}if(!files.find(x=>x.name===f.name))files.push(f);});renderFiles();}
+function removeFile(i){files.splice(i,1);renderFiles();}
+function renderFiles(){const l=document.getElementById('file-list');document.getElementById('no-file-note').style.display=files.length?'none':'';l.innerHTML='';files.forEach((f,i)=>{const d=document.createElement('div');d.className='file-item';const s=f.size<1048576?Math.round(f.size/1024)+' KB':(f.size/1048576).toFixed(1)+' MB';d.innerHTML=`<span>📎</span><span class="file-name">${f.name}</span><span class="file-size">${s}</span><button type="button" class="file-remove" onclick="removeFile(${i})">✕</button>`;l.appendChild(d);});}
+const uz=document.getElementById('upload-zone');
+uz.addEventListener('dragover',e=>{e.preventDefault();uz.classList.add('dragover');});
+uz.addEventListener('dragleave',()=>uz.classList.remove('dragover'));
+uz.addEventListener('drop',e=>{e.preventDefault();uz.classList.remove('dragover');handleFiles(e.dataTransfer.files);});
+
+document.getElementById('anfrage-form').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const menge=parseInt(document.getElementById('f-menge').value)||0;
+  const min=parseInt(document.getElementById('f-menge').min)||1;
+  if(menge<min){alert('Mindestmenge ist '+min+' Stück.');return;}
+  const cs=document.getElementById('color-section');
+  if(cs.style.display!=='none'&&!document.getElementById('f-farbe').value){alert('Bitte eine Farbe auswählen.');return;}
+  const btn=document.getElementById('submit-btn');btn.textContent='Wird gesendet…';btn.disabled=true;
+  const fd=new FormData(this);files.forEach((f,i)=>fd.append('datei_'+i,f,f.name));
+  try{
+    const res=await fetch('/',{method:'POST',body:fd});
+    if(!res.ok)throw new Error();
+    this.style.display='none';document.getElementById('success-view').style.display='block';
+    document.getElementById('success-text').innerHTML='Vielen Dank! Wir melden uns schnellstmöglich.'+(files.length?`<br><strong>${files.length} Datei(en) hochgeladen.</strong>`:'')+`<br><br>Cewegis Großhandel GmbH · Berlin`;
+  }catch{alert('Fehler. Bitte anrufen: 0178 562 3485');btn.textContent='Angebot anfordern →';btn.disabled=false;}
+});
+laden();
+</script>
+</body>
+</html>
